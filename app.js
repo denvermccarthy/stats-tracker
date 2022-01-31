@@ -12,6 +12,7 @@ let games = [];
 
 // IMPURE RENDER FUNCTIONS
 // YOUR CODE MUST CALL THESE FUNCTIONS
+
 function renderGames() {
     gameList.textContent = '';
     for (let game of games) {
@@ -63,6 +64,22 @@ remove.addEventListener('click', () => {
 save.addEventListener('click', () => {
     // Step 3 - add code to allow users to save the state
     // Loop through the list of stats and add up the total points scored
+    let pointSum = 0; 
+    stats.forEach(stat => {
+        // gets a number and addd
+        const num = Number(stat.points);
+        // console.log(typeof num);
+        pointSum += num;
+        return pointSum; 
+    });
+
+    const game = {
+        number: games.length + 1,
+        totalPoints: pointSum
+    };
+    games.push(game);
+    renderGames();
+    resetStats();
     // Create a new object with the game number and the total points
     // { number: games.length + 1, totalPoints: totalPoints }
     // Push the new object onto the games array then call renderGames
